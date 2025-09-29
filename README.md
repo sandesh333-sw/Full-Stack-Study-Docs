@@ -1,13 +1,12 @@
-# Web Dev Notes – HTML, CSS, JavaScript, Node.js, React, CI/CD, Kubernetes
+# Web Dev Notes – HTML, CSS, JavaScript (Beginner → Advanced)
 
-A single-file notes hub you can skim fast or study deep. Copy-paste friendly examples. Minimal fluff.
+Single-file, exam-ready notes. Skimmable sections. Copy-paste snippets. No fluff.
 
 ---
 
-## 1) HTML Notes
+## 1) HTML – Structure & Semantics
 
-- **HTML = Structure** of the web page. Use semantic tags for meaning and accessibility.
-- **Boilerplate**:
+### 1.1 Boilerplate
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -15,313 +14,318 @@ A single-file notes hub you can skim fast or study deep. Copy-paste friendly exa
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Title</title>
-  <meta name="description" content="Short page description">
+  <meta name="description" content="Page description">
+  <link rel="icon" href="favicon.ico">
 </head>
 <body>
   <header>...</header>
+  <nav>...</nav>
   <main>...</main>
   <footer>...</footer>
 </body>
 </html>
 ```
-- **Semantics**: `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`, `figure`, `figcaption`, `time`, `mark`.
-- **Links & Images**:
+
+### 1.2 Semantics
+- Structure: `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`
+- Media & captions: `figure`, `figcaption`
+- Text semantics: `strong`, `em`, `mark`, `small`, `del`, `ins`, `cite`, `abbr`, `time`
+- Accessibility: Use correct landmarks; titles/labels; alt text for images
+
+### 1.3 Links & Images
 ```html
-<a href="#id">Jump</a>
+<a href="#contact">Jump to contact</a>
 <a href="https://example.com" target="_blank" rel="noopener noreferrer">External</a>
-<img src="img.png" alt="Description" width="300">
+<img src="photo.jpg" alt="A scenic mountain" width="400" loading="lazy">
+<picture>
+  <source srcset="img.webp" type="image/webp">
+  <img src="img.jpg" alt="Responsive image">
+</picture>
 ```
-- **Forms (HTML5)**:
+
+### 1.4 Lists & Tables
 ```html
-<form action="/submit" method="post">
+<ul><li>Item</li><li>Item</li></ul>
+<ol><li>Step</li><li>Step</li></ol>
+
+<table>
+  <caption>Sales 2025</caption>
+  <thead><tr><th>Q</th><th>Total</th></tr></thead>
+  <tbody><tr><td>Q1</td><td>$10k</td></tr></tbody>
+</table>
+```
+
+### 1.5 Forms (HTML5)
+```html
+<form action="/submit" method="post" novalidate>
   <label for="email">Email</label>
   <input id="email" name="email" type="email" required>
-  <input type="number" min="0" max="100">
-  <input type="date">
+
+  <label><input type="checkbox" name="agree" required> I agree</label>
+
+  <label for="age">Age</label>
+  <input id="age" type="number" min="0" max="120">
+
+  <label for="date">Date</label>
+  <input id="date" type="date">
+
   <button type="submit">Send</button>
 </form>
 ```
-- **Tables**: Use for data (not layout). `thead`, `tbody`, `th`, `td`, `caption`.
-- **Accessibility**: Alt text, labels, focus order, semantic tags, `aria-*` only when needed.
+Tips: Use `label` for every control; use proper `type`; use `required`, `pattern`, `min/max` for native validation.
+
+### 1.6 Meta & SEO Basics
+- Unique, descriptive `<title>` (50–60 chars)
+- `<meta name="description">` (150–160 chars)
+- Proper heading hierarchy: one `h1`, then `h2`…
+- `alt` text for images; semantic HTML; performance matters
 
 ---
 
-## 2) CSS Notes
+## 2) CSS – Layout & Design
 
-- **CSS = Presentation** (style/layout). Cascade + Specificity + Inheritance.
-- **Selectors**: element `p`, class `.card`, id `#app`, attribute `[type="email"]`, pseudo `:hover`, `:focus`, `::before`.
-- **Box Model**:
-  - Content → Padding → Border → Margin
-  - Use `* { box-sizing: border-box; }` for predictable sizing.
-- **Layout**:
+### 2.1 Core Concepts
+- Cascade, Specificity, Inheritance
+- Specificity order: inline > id > class/attr/pseudo > element
+- Reset & box sizing:
 ```css
-.container { display: flex; gap: 16px; }
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 ```
-- **Responsive**:
+
+### 2.2 Selectors & Pseudos
+```css
+/* Basic */
+p { margin: 0 0 1rem; }
+.card { border: 1px solid #e5e7eb; }
+#app { min-height: 100vh; }
+
+/* Attribute */
+input[type="email"] { border-color: #60a5fa; }
+
+/* Pseudo-class / -element */
+a:hover { text-decoration: underline; }
+button:focus { outline: 2px solid #f59e0b; outline-offset: 2px; }
+p::first-line { font-weight: 600; }
+```
+
+### 2.3 Box Model & Spacing
+```css
+.container { padding: 16px; border: 1px solid #e5e7eb; margin: 16px auto; max-width: 960px; }
+```
+- Margin collapsing happens between vertical margins of blocks.
+
+### 2.4 Colors, Fonts, Variables
+```css
+:root { --primary: #667eea; --text: #111827; }
+body { color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+.btn { background: var(--primary); color: #fff; }
+```
+
+### 2.5 Layout: Flexbox
+```css
+.row { display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+.col { flex: 1; }
+```
+Use when in one dimension (row or column) with alignment control.
+
+### 2.6 Layout: Grid
+```css
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-areas {
+  display: grid;
+  grid-template:
+    "hd hd" auto
+    "sb ct" 1fr
+    "ft ft" auto / 240px 1fr;
+}
+```
+Use when you need two‑dimensional layout with explicit placement.
+
+### 2.7 Responsive & Units
 ```css
 @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 ```
-- **Units**: `px`, `%`, `rem` (root), `em` (parent), `vw`, `vh`.
-- **Common patterns**:
+- Prefer `%`, `rem`, `vh/vw` for scalable design. Use `clamp(min, preferred, max)`.
 ```css
-:root { --primary: #667eea; }
-.btn { padding: 12px 20px; border-radius: 8px; background: var(--primary); color: #fff; }
-.card { box-shadow: 0 4px 10px rgba(0,0,0,.1); border: 1px solid #e5e7eb; border-radius: 10px; }
-.link { color: #2563eb; text-decoration: none; }
-.link:hover { text-decoration: underline; }
+.title { font-size: clamp(1.25rem, 1.5vw + 1rem, 2.25rem); }
 ```
-- **Animations**:
+
+### 2.8 Transitions & Animations
 ```css
+.btn { transition: transform .2s ease, box-shadow .2s ease; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.1); }
+
 .fade-in { animation: fade .4s ease; }
 @keyframes fade { from { opacity: 0 } to { opacity: 1 } }
 ```
 
----
-
-## 3) JavaScript Notes
-
-- **JS = Behavior**. Runs in browser and (with Node.js) on server.
-- **Variables**:
-```js
-const PI = 3.14159; // constant
-let count = 0;      // mutable
-```
-- **Types**: number, string, boolean, null, undefined, object, symbol, bigint.
-- **Functions**:
-```js
-function add(a, b) { return a + b }
-const multiply = (a, b) => a * b;
-```
-- **Objects/Arrays**:
-```js
-const user = { id: 1, name: 'Ada' };
-const nums = [1,2,3];
-const copy = { ...user, role: 'admin' };
-const doubled = nums.map(n => n*2);
-```
-- **DOM**:
-```js
-document.querySelector('#btn').addEventListener('click', () => {
-  document.querySelector('#out').textContent = 'Clicked!';
-});
-```
-- **Async**:
-```js
-async function load() {
-  const res = await fetch('/api');
-  if (!res.ok) throw new Error('Request failed');
-  const data = await res.json();
-  return data;
-}
-```
-- **Modules**:
-```js
-// lib.js
-export const sum = (a,b) => a+b;
-// main.js
-import { sum } from './lib.js';
-```
-
----
-
-## 4) Node.js Notes (Backend)
-
-- **Node.js**: JS runtime on server (V8). Non-blocking, event-driven I/O.
-- **Initialize project**:
-```bash
-npm init -y
-npm i express
-npm i -D nodemon
-```
-- **Simple HTTP Server (Express)**:
-```js
-// app.js
-const express = require('express');
-const app = express();
-app.use(express.json());
-app.get('/api/health', (_req, res) => res.json({ ok: true }));
-app.post('/api/users', (req, res) => res.status(201).json(req.body));
-app.use((req, res) => res.status(404).json({ error: 'Not found' }));
-app.listen(3000, () => console.log('http://localhost:3000'));
-```
-- **Scripts** (package.json):
-```json
-{
-  "scripts": { "dev": "nodemon app.js", "start": "node app.js" }
-}
-```
-- **ENV**: Use `.env` + `process.env`. Never commit secrets.
-
----
-
-## 5) React Notes (Frontend)
-
-- **React**: Component-based UI library. Declarative, Virtual DOM.
-- **Create project (Vite)**:
-```bash
-npm create vite@latest my-app -- --template react
-cd my-app && npm i && npm run dev
-```
-- **Component + State**:
-```jsx
-import { useState } from 'react';
-
-export default function Counter() {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(c => c + 1)}>+1</button>
-    </div>
-  );
-}
-```
-- **Props**:
-```jsx
-function Hello({ name = 'Guest' }) { return <p>Hello, {name}</p>; }
-```
-- **Effect**:
-```jsx
-import { useEffect } from 'react';
-useEffect(() => { document.title = 'Loaded'; }, []);
-```
-- **Lists/Keys**:
-```jsx
-{items.map(item => <li key={item.id}>{item.name}</li>)}
-```
-
----
-
-## 6) Git, GitHub, CI/CD Notes
-
-- **Basic Git**:
-```bash
-git init
-git add .
-git commit -m "msg"
-git branch -M main
-git remote add origin https://github.com/user/repo.git
-git push -u origin main
-```
-- **GitHub Pages (static)**: Settings → Pages → Deploy from `main` root. Site at `https://user.github.io/repo`.
-- **GitHub Actions (CI)**:
-```yaml
-# .github/workflows/ci.yml
-name: CI
-on: [push, pull_request]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with: { node-version: '18', cache: 'npm' }
-      - run: npm ci
-      - run: npm test --if-present
-      - run: npm run build --if-present
-```
-- **Env/Secrets**: Add secrets in Repo Settings → Secrets and variables → Actions.
-
----
-
-## 7) Kubernetes (K8s) Notes
-
-- **K8s**: Orchestrates containers at scale. Core objects: Pod, Deployment, Service, Ingress, ConfigMap, Secret.
-- **Pod (basic)**:
-```yaml
-apiVersion: v1
-kind: Pod
-metadata: { name: hello }
-spec:
-  containers:
-  - name: app
-    image: nginx:alpine
-    ports: [{ containerPort: 80 }]
-```
-- **Deployment + Service**:
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata: { name: web }
-spec:
-  replicas: 2
-  selector: { matchLabels: { app: web } }
-  template:
-    metadata: { labels: { app: web } }
-    spec:
-      containers:
-      - name: web
-        image: nginx:alpine
-        ports: [{ containerPort: 80 }]
----
-apiVersion: v1
-kind: Service
-metadata: { name: web-svc }
-spec:
-  type: ClusterIP
-  selector: { app: web }
-  ports:
-    - port: 80
-      targetPort: 80
-```
-- **kubectl**:
-```bash
-kubectl apply -f k8s/
-kubectl get pods,svc,deploy
-kubectl logs deploy/web
-kubectl rollout restart deploy/web
-```
-- **Helm**: Package manager for K8s charts. `helm install name chart/`.
-
----
-
-## 8) Deployment Tips
-
-- **Static sites**: GitHub Pages / Netlify / Vercel.
-- **React apps**: Vercel/Netlify (build + CDN). 
-- **Node APIs**: Render / Railway / Fly.io / VPS (Docker).
-- **Best practices**: Env vars, logs, health endpoints, backups.
-
----
-
-## 9) Quick Reference
-
-- **HTTP Codes**: 200 OK, 201 Created, 204 No Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, 500 Server Error.
-- **Content Types**: `text/html`, `application/json`, `multipart/form-data`.
-- **Security**: Never trust input; validate & sanitize. Use HTTPS. Don’t commit secrets. Use CORS properly.
-- **Performance**: Minify assets, cache, lazy-load images, paginate API.
-
----
-
-## 10) Roadmap (Suggested)
-
-1. HTML Basics → CSS Basics → JS Basics
-2. Build small projects (Todo, Calculator, Portfolio)
-3. Learn Git/GitHub → Host with GitHub Pages
-4. Dive into Node.js (REST API with Express)
-5. Learn React fundamentals (components, hooks)
-6. Add CI with GitHub Actions
-7. Containerize (Docker) → Learn K8s basics
-8. Build a full-stack project and deploy
-
----
-
-## 11) Snippets You’ll Reuse
-
-```html
-<!-- Center container -->
-<div style="max-width:900px;margin:0 auto;padding:16px"></div>
-```
+### 2.9 Common UI Snippets
 ```css
-/* Visually hidden but accessible */
+.card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #eef2ff; color: #3730a3; }
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 ```
+
+---
+
+## 3) JavaScript – Language & DOM (ES6+)
+
+### 3.1 Essentials
 ```js
-// Debounce
-const debounce=(fn,d=300)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),d)}}
+const answer = 42;          // constant
+let count = 0;              // mutable
+const user = { id: 1 };
+```
+- Types: number, string, boolean, null, undefined, object, symbol, bigint.
+- Truthy/falsy: `"", 0, null, undefined, NaN, false` are falsy.
+
+### 3.2 Functions & This
+```js
+function sum(a, b) { return a + b; }
+const mul = (a, b) => a * b;
+const obj = {
+  n: 1,
+  inc() { this.n++; },     // method – has its own `this`
+};
+```
+
+### 3.3 Arrays & Objects
+```js
+const nums = [1,2,3];
+const doubled = nums.map(n => n*2);
+const evens = nums.filter(n => n%2===0);
+const total = nums.reduce((a,b) => a+b, 0);
+
+const user = { id: 1, name: 'Ada' };
+const copy = { ...user, role: 'admin' };
+const { name } = user; // destructuring
+```
+
+### 3.4 Modules
+```js
+// lib.js
+export const greet = (n) => `Hi, ${n}`;
+// main.js
+import { greet } from './lib.js';
+```
+
+### 3.5 DOM & Events
+```js
+const btn = document.querySelector('#btn');
+const out = document.querySelector('#out');
+btn.addEventListener('click', () => { out.textContent = 'Clicked!'; });
+```
+- Query: `querySelector`, `querySelectorAll`
+- Create/insert: `document.createElement`, `append`, `before`, `innerHTML`
+- Classes: `el.classList.add/remove/toggle`
+- Attributes/style: `setAttribute`, `el.style.color = 'red'`
+
+### 3.6 Forms & Validation
+```js
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const email = data.get('email');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Invalid email');
+    return;
+  }
+  console.log(Object.fromEntries(data));
+});
+```
+
+### 3.7 Fetch & Async/Await
+```js
+async function getUsers() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  if (!res.ok) throw new Error('Request failed');
+  return res.json();
+}
+getUsers().then(console.log).catch(console.error);
+```
+
+### 3.8 Performance & Patterns
+- Minimize DOM reflows; batch updates; use `DocumentFragment` for many inserts.
+- Debounce and throttle input/scroll events.
+```js
+const debounce=(fn, d=300)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),d)}};
+const throttle=(fn, d=300)=>{let t=0;return(...a)=>{const now=Date.now();if(now-t>=d){t=now;fn(...a)}}};
+```
+- Pure functions, immutability where possible. Prefer `map/filter/reduce`.
+
+### 3.9 Error Handling
+```js
+try {
+  // risky
+} catch (err) {
+  console.error(err.message);
+} finally {
+  // cleanup
+}
+```
+- In async: wrap awaits in try/catch; surface actionable messages.
+
+### 3.10 Useful Snippets
+```js
+// Copy to clipboard
+async function copy(text){ await navigator.clipboard.writeText(text); }
+
+// Query helpers
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+// Deep clone (simple)
+const clone = (obj) => JSON.parse(JSON.stringify(obj));
 ```
 
 ---
 
-Keep learning. Keep shipping. 🚀
+## 4) Projects to Practice (HTML/CSS/JS only)
+
+- Todo App: add/complete/delete tasks, persist to `localStorage`.
+- Calculator: keyboard input, error handling, expression parsing.
+- Quiz App: timer, score, question bank, progress bar.
+- Weather Widget: fetch API, loading/error states, unit toggle.
+- Portfolio: sections, responsive nav, smooth scroll, accessible forms.
+
+---
+
+## 5) Debugging & Tools
+
+- Browser DevTools: Elements (DOM/CSS), Console (logs/errors), Network (requests), Performance (profiling), Lighthouse (audits).
+- Linters/Formatters: ESLint + Prettier for consistent JS style.
+- Accessibility check: Tab through, color contrast, aria-live for dynamic updates.
+
+---
+
+## 6) Checklists
+
+### HTML
+- One `h1` per page; logical headings.
+- Semantic containers; alt text; labels for inputs.
+- Meta title/description; language attr on `<html>`.
+
+### CSS
+- Use variables; responsive units; mobile-first media queries.
+- Avoid `!important`; keep specificity low; utility classes where helpful.
+- Test in light/dark backgrounds; focus styles visible.
+
+### JS
+- Guard clauses first; meaningful names; small functions.
+- Don’t block main thread; handle errors; validate inputs.
+- Keep DOM manipulation minimal; detach/attach in batches.
+
+---
+
+## 7) Roadmap (HTML/CSS/JS Only)
+
+1. HTML semantics → forms → media → accessibility
+2. CSS selectors → box model → flex/grid → responsive → animations
+3. JS basics → DOM/events → fetch/async → patterns → performance
+4. Build 3–5 small projects; iterate on code quality and UX.
+
+---
+
+Keep shipping. 🚀
