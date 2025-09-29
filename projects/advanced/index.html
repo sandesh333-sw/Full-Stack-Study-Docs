@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Projects - Web Development Learning Hub</title>
+    <link rel="stylesheet" href="../../styles/learning.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">💻 WebDev Hub</a>
+            <div class="nav-links">
+                <a href="../../nodejs/01-basics/">Node.js</a>
+                <a href="../../react/01-basics/">React</a>
+                <a href="../../cicd/01-basics/">CI/CD</a>
+                <a href="../advanced/">Projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <div class="container">
+                <h1>Advanced Projects 🔥</h1>
+                <p>Enterprise-level applications with cutting-edge technologies</p>
+                <div class="breadcrumb">
+                    <a href="../../index.html">Home</a> → <a href="../">Projects</a> → <span>Advanced</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="learning-layout">
+                <aside class="sidebar">
+                    <nav class="topic-nav">
+                        <h3>Projects</h3>
+                        <ul>
+                            <li><a href="#realtime-chat">Real-time Chat App</a></li>
+                            <li><a href="#data-visualization">Data Visualization</a></li>
+                            <li><a href="#pwa-development">PWA Development</a></li>
+                            <li><a href="#microservices">Microservices App</a></li>
+                            <li><a href="#devops-pipeline">DevOps Pipeline</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <div class="content">
+                    <section class="topic-section">
+                        <h2>Advanced Web Development Projects 🎯</h2>
+                        <div class="explanation">
+                            <p>These projects simulate real-world enterprise applications using modern technologies, best practices, and scalable architectures.</p>
+                            
+                            <div class="key-points">
+                                <h4>Prerequisites:</h4>
+                                <ul>
+                                    <li>Completed intermediate projects</li>
+                                    <li>Solid understanding of React/Node.js</li>
+                                    <li>Database design knowledge</li>
+                                    <li>Docker and containerization basics</li>
+                                    <li>CI/CD pipeline understanding</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tip-box">
+                            <h4>🏆 Success Tips:</h4>
+                            <ul>
+                                <li>Focus on one project at a time</li>
+                                <li>Use industry-standard tools and practices</li>
+                                <li>Implement proper testing (unit, integration, e2e)</li>
+                                <li>Document your code and architecture decisions</li>
+                                <li>Deploy to production environments</li>
+                                <li>Monitor performance and user analytics</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="realtime-chat" class="topic-section">
+                        <h2>Real-time Chat Application 💬</h2>
+                        <div class="explanation">
+                            <p>Build a scalable chat application with multiple rooms, user presence, file sharing, and video calling capabilities.</p>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>Core Features</h4>
+                                <ul>
+                                    <li>Real-time messaging (Socket.io)</li>
+                                    <li>Multiple chat rooms</li>
+                                    <li>User authentication (JWT)</li>
+                                    <li>Online/offline status</li>
+                                    <li>Message encryption</li>
+                                    <li>File and image sharing</li>
+                                </ul>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Advanced Features</h4>
+                                <ul>
+                                    <li>Video/voice calling (WebRTC)</li>
+                                    <li>Screen sharing</li>
+                                    <li>Message reactions and replies</li>
+                                    <li>Push notifications</li>
+                                    <li>Message search and history</li>
+                                    <li>Admin moderation tools</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Architecture Overview:</h4>
+                            <pre><code>chat-app/
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   └── utils/
+├── server/                 # Node.js backend
+│   ├── routes/
+│   ├── models/
+│   ├── middleware/
+│   ├── socket/
+│   └── utils/
+├── shared/                 # Shared types/utilities
+├── docker-compose.yml      # Development environment
+└── k8s/                    # Kubernetes deployment</code></pre>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>Frontend Tech Stack</h4>
+                                <ul>
+                                    <li>React 18 with TypeScript</li>
+                                    <li>Redux Toolkit for state management</li>
+                                    <li>Socket.io-client for real-time</li>
+                                    <li>Material-UI or Chakra UI</li>
+                                    <li>React Query for API calls</li>
+                                    <li>PWA capabilities</li>
+                                </ul>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Backend Tech Stack</h4>
+                                <ul>
+                                    <li>Node.js with Express</li>
+                                    <li>Socket.io for WebSocket</li>
+                                    <li>MongoDB or PostgreSQL</li>
+                                    <li>Redis for caching/sessions</li>
+                                    <li>JWT authentication</li>
+                                    <li>Docker containerization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="data-visualization" class="topic-section">
+                        <h2>Data Visualization Dashboard 📊</h2>
+                        <div class="explanation">
+                            <p>Create an interactive dashboard that processes large datasets and presents insights through beautiful, responsive visualizations.</p>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>Visualization Features</h4>
+                                <ul>
+                                    <li>Interactive charts (D3.js/Chart.js)</li>
+                                    <li>Real-time data updates</li>
+                                    <li>Custom date range filtering</li>
+                                    <li>Export functionality (PDF/Excel)</li>
+                                    <li>Drill-down capabilities</li>
+                                    <li>Responsive design</li>
+                                </ul>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Data Processing</h4>
+                                <ul>
+                                    <li>ETL pipelines</li>
+                                    <li>Large dataset handling</li>
+                                    <li>API data aggregation</li>
+                                    <li>Caching strategies</li>
+                                    <li>Background job processing</li>
+                                    <li>Performance optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tip-box">
+                            <h4>📈 Visualization Libraries:</h4>
+                            <ul>
+                                <li><strong>D3.js:</strong> Maximum customization and power</li>
+                                <li><strong>Chart.js:</strong> Simple and responsive charts</li>
+                                <li><strong>Recharts:</strong> React-specific charting</li>
+                                <li><strong>Observable Plot:</strong> Grammar of graphics</li>
+                                <li><strong>Three.js:</strong> 3D visualizations</li>
+                                <li><strong>Leaflet/Mapbox:</strong> Geographic data</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="pwa-development" class="topic-section">
+                        <h2>Progressive Web App (PWA) 📱</h2>
+                        <div class="explanation">
+                            <p>Build a full-featured Progressive Web App that works offline, sends push notifications, and provides a native app experience.</p>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>PWA Features</h4>
+                                <ul>
+                                    <li>Service Worker implementation</li>
+                                    <li>Offline functionality</li>
+                                    <li>Push notifications</li>
+                                    <li>App-like installation</li>
+                                    <li>Background sync</li>
+                                    <li>Caching strategies</li>
+                                </ul>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Performance Optimization</h4>
+                                <ul>
+                                    <li>Code splitting and lazy loading</li>
+                                    <li>Image optimization</li>
+                                    <li>Critical resource prioritization</li>
+                                    <li>Lighthouse score optimization</li>
+                                    <li>Bundle size optimization</li>
+                                    <li>CDN integration</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Service Worker Example:</h4>
+                            <pre><code class="language-javascript">// sw.js - Service Worker
+const CACHE_NAME = 'pwa-v1';
+const urlsToCache = [
+  '/',
+  '/static/css/main.css',
+  '/static/js/main.js',
+  '/offline.html'
+];
+
+// Install event - cache resources
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(urlsToCache))
+  );
+});
+
+// Fetch event - serve from cache
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then((response) => {
+        return response || fetch(event.request);
+      }
+    )
+  );
+});</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="microservices" class="topic-section">
+                        <h2>Microservices Architecture 🏗️</h2>
+                        <div class="explanation">
+                            <p>Design and implement a microservices-based application with multiple services, API gateway, and service discovery.</p>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>Services Architecture</h4>
+                                <ul>
+                                    <li>API Gateway (Kong/Nginx)</li>
+                                    <li>User Management Service</li>
+                                    <li>Product Catalog Service</li>
+                                    <li>Order Processing Service</li>
+                                    <li>Payment Service</li>
+                                    <li>Notification Service</li>
+                                </ul>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Infrastructure</h4>
+                                <ul>
+                                    <li>Docker containerization</li>
+                                    <li>Kubernetes orchestration</li>
+                                    <li>Service mesh (Istio)</li>
+                                    <li>Message queues (RabbitMQ)</li>
+                                    <li>Distributed logging</li>
+                                    <li>Monitoring (Prometheus)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Docker Compose Setup:</h4>
+                            <pre><code class="language-yaml"># docker-compose.yml
+version: '3.8'
+services:
+  api-gateway:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    depends_on:
+      - user-service
+      - product-service
+      - order-service
+
+  user-service:
+    build: ./services/user-service
+    environment:
+      - DATABASE_URL=postgresql://user:pass@postgres:5432/users
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+
+  product-service:
+    build: ./services/product-service
+    environment:
+      - MONGODB_URL=mongodb://mongo:27017/products
+    depends_on:
+      - mongo
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=users
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+
+  mongo:
+    image: mongo:4.4
+
+  redis:
+    image: redis:6-alpine</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="devops-pipeline" class="topic-section">
+                        <h2>Complete DevOps Pipeline 🔄</h2>
+                        <div class="explanation">
+                            <p>Implement a full CI/CD pipeline with automated testing, security scanning, deployment, and monitoring.</p>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>CI/CD Pipeline</h4>
+                                <ul>
+                                    <li>GitHub Actions workflows</li>
+                                    <li>Automated testing (Jest, Cypress)</li>
+                                    <li>Code quality checks (SonarQube)</li>
+                                    <li>Security scanning (Snyk)</li>
+                                    <li>Docker image building</li>
+                                    <li>Multi-environment deployment</li>
+                                </ul>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Infrastructure as Code</h4>
+                                <ul>
+                                    <li>Terraform for provisioning</li>
+                                    <li>Ansible for configuration</li>
+                                    <li>Kubernetes manifests</li>
+                                    <li>Helm charts</li>
+                                    <li>Environment management</li>
+                                    <li>Disaster recovery</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>GitHub Actions Workflow:</h4>
+                            <pre><code class="language-yaml"># .github/workflows/deploy.yml
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Run E2E tests
+        run: npm run test:e2e
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run security scan
+        uses: snyk/actions/node@master
+        with:
+          args: --severity-threshold=high
+
+  deploy:
+    needs: [test, security]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build Docker image
+        run: docker build -t myapp:${{ github.sha }} .
+      
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f k8s/</code></pre>
+                        </div>
+                    </section>
+
+                    <div class="exercise-box">
+                        <h4>🎯 Advanced Project Challenge:</h4>
+                        <p><strong>Build a Complete Platform:</strong></p>
+                        <p>Choose one project and implement it with:</p>
+                        <ul>
+                            <li>✅ Production-ready code quality</li>
+                            <li>✅ Comprehensive testing suite</li>
+                            <li>✅ CI/CD pipeline implementation</li>
+                            <li>✅ Monitoring and logging</li>
+                            <li>✅ Security best practices</li>
+                            <li>✅ Documentation and deployment guides</li>
+                            <li>✅ Performance optimization</li>
+                            <li>✅ Scalability considerations</li>
+                        </ul>
+                    </div>
+
+                    <div class="lesson-nav">
+                        <a href="../intermediate/" class="nav-btn prev">← Intermediate Projects</a>
+                        <a href="../../index.html" class="nav-btn next">Back to Home →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Web Development Learning Hub. Master enterprise development! 🔥</p>
+        </div>
+    </footer>
+
+    <script src="../../scripts/learning.js"></script>
+</body>
+</html>

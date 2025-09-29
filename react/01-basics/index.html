@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React.js Basics - Web Development Learning Hub</title>
+    <link rel="stylesheet" href="../../styles/learning.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">💻 WebDev Hub</a>
+            <div class="nav-links">
+                <a href="../../html/01-basics/">HTML</a>
+                <a href="../../css/01-basics/">CSS</a>
+                <a href="../../javascript/01-basics/">JavaScript</a>
+                <a href="../01-basics/">React.js</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <div class="container">
+                <h1>React.js Basics ⚛️</h1>
+                <p>Build dynamic user interfaces with React</p>
+                <div class="breadcrumb">
+                    <a href="../../index.html">Home</a> → <span>React.js Basics</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="learning-layout">
+                <aside class="sidebar">
+                    <nav class="topic-nav">
+                        <h3>Topics</h3>
+                        <ul>
+                            <li><a href="#what-is-react">What is React?</a></li>
+                            <li><a href="#setup">Setup & Installation</a></li>
+                            <li><a href="#jsx">JSX Syntax</a></li>
+                            <li><a href="#components">Components</a></li>
+                            <li><a href="#props">Props</a></li>
+                            <li><a href="#state">State & useState</a></li>
+                            <li><a href="#events">Event Handling</a></li>
+                            <li><a href="#conditional-rendering">Conditional Rendering</a></li>
+                            <li><a href="#lists">Lists & Keys</a></li>
+                            <li><a href="#useEffect">useEffect Hook</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <div class="content">
+                    <!-- What is React -->
+                    <section id="what-is-react" class="topic-section">
+                        <h2>What is React? ⚛️</h2>
+                        <div class="explanation">
+                            <p><strong>React</strong> is a JavaScript library for building user interfaces, especially single-page applications. Created by Facebook, it's component-based and uses a virtual DOM for efficient updates.</p>
+                            
+                            <div class="key-points">
+                                <h4>Key Features:</h4>
+                                <ul>
+                                    <li><strong>Component-Based:</strong> Build encapsulated components</li>
+                                    <li><strong>Virtual DOM:</strong> Efficient rendering and updates</li>
+                                    <li><strong>Declarative:</strong> Describe what UI should look like</li>
+                                    <li><strong>Learn Once, Write Anywhere:</strong> Web, mobile (React Native)</li>
+                                    <li><strong>Strong Ecosystem:</strong> Huge community and libraries</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>Virtual DOM</h4>
+                                <p>React creates a virtual representation of DOM in memory, making updates fast</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Components</h4>
+                                <p>Reusable pieces of UI that can manage their own state</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>JSX</h4>
+                                <p>JavaScript syntax extension that looks like HTML</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>One-Way Data Flow</h4>
+                                <p>Data flows down from parent to child components</p>
+                            </div>
+                        </div>
+
+                        <div class="tip-box">
+                            <h4>🚀 Why React?</h4>
+                            <ul>
+                                <li>Used by Facebook, Netflix, Airbnb, Uber</li>
+                                <li>Huge job market demand</li>
+                                <li>Excellent developer tools</li>
+                                <li>Active community and regular updates</li>
+                                <li>Great performance with virtual DOM</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Setup -->
+                    <section id="setup" class="topic-section">
+                        <h2>Setup & Installation 📦</h2>
+                        <div class="explanation">
+                            <p>There are several ways to start with React. We'll use Create React App for beginners.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Prerequisites:</h4>
+                            <pre><code class="language-bash"># Check Node.js version (need 14.0.0 or higher)
+node --version
+
+# Check npm version
+npm --version</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Create React App (Recommended for beginners):</h4>
+                            <pre><code class="language-bash"># Create new React app
+npx create-react-app my-react-app
+
+# Navigate to project folder
+cd my-react-app
+
+# Start development server
+npm start
+
+# Your app will open at http://localhost:3000</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Project Structure:</h4>
+                            <pre><code class="language-bash">my-react-app/
+├── public/
+│   ├── index.html          # Main HTML file
+│   └── favicon.ico
+├── src/
+│   ├── App.js             # Main App component
+│   ├── App.css            # App styles
+│   ├── index.js           # Entry point
+│   └── index.css          # Global styles
+├── package.json           # Dependencies
+└── README.md</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Alternative: Vite (Faster):</h4>
+                            <pre><code class="language-bash"># Create React app with Vite (faster build tool)
+npm create vite@latest my-react-app -- --template react
+
+cd my-react-app
+npm install
+npm run dev</code></pre>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>Create React App</h4>
+                                <p>Official tool, zero configuration, great for learning</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Vite</h4>
+                                <p>Faster build tool, good for development</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Next.js</h4>
+                                <p>Full-stack React framework with SSR</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Manual Setup</h4>
+                                <p>Configure Webpack/Babel manually (advanced)</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- JSX -->
+                    <section id="jsx" class="topic-section">
+                        <h2>JSX Syntax 📝</h2>
+                        <div class="explanation">
+                            <p>JSX is a syntax extension for JavaScript that looks like HTML. It makes React components more readable and writable.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>JSX Basics:</h4>
+                            <pre><code class="language-jsx">// JSX example
+const element = &lt;h1&gt;Hello, React! ⚛️&lt;/h1&gt;;
+
+// JSX with variables
+const name = 'Developer';
+const greeting = &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;
+
+// JSX with expressions
+const user = {
+    firstName: 'John',
+    lastName: 'Doe'
+};
+
+const element2 = (
+    &lt;h1&gt;
+        Hello, {user.firstName} {user.lastName}!
+    &lt;/h1&gt;
+);
+
+// JSX with functions
+function formatName(user) {
+    return user.firstName + ' ' + user.lastName;
+}
+
+const element3 = &lt;h1&gt;Hello, {formatName(user)}!&lt;/h1&gt;;</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>JSX Rules:</h4>
+                            <pre><code class="language-jsx">// 1. Must return single parent element
+const validJSX = (
+    &lt;div&gt;
+        &lt;h1&gt;Title&lt;/h1&gt;
+        &lt;p&gt;Paragraph&lt;/p&gt;
+    &lt;/div&gt;
+);
+
+// Or use React Fragment
+const fragmentJSX = (
+    &lt;React.Fragment&gt;
+        &lt;h1&gt;Title&lt;/h1&gt;
+        &lt;p&gt;Paragraph&lt;/p&gt;
+    &lt;/React.Fragment&gt;
+);
+
+// Short syntax for Fragment
+const shortFragment = (
+    &lt;&gt;
+        &lt;h1&gt;Title&lt;/h1&gt;
+        &lt;p&gt;Paragraph&lt;/p&gt;
+    &lt;/&gt;
+);
+
+// 2. Use className instead of class
+const styledElement = &lt;div className="container"&gt;Content&lt;/div&gt;;
+
+// 3. Use camelCase for attributes
+const inputElement = (
+    &lt;input 
+        type="text" 
+        placeholder="Enter text"
+        onChange={handleChange}
+        autoComplete="off"
+    /&gt;
+);
+
+// 4. Self-closing tags must have /
+const imageElement = &lt;img src="image.jpg" alt="Description" /&gt;;</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Embedding JavaScript:</h4>
+                            <pre><code class="language-jsx">function App() {
+    const isLoggedIn = true;
+    const users = ['Alice', 'Bob', 'Charlie'];
+    const currentTime = new Date().toLocaleTimeString();
+    
+    return (
+        &lt;div&gt;
+            {/* Comments in JSX */}
+            &lt;h1&gt;Welcome to React!&lt;/h1&gt;
+            
+            {/* Conditional rendering */}
+            {isLoggedIn ? &lt;p&gt;Welcome back!&lt;/p&gt; : &lt;p&gt;Please log in&lt;/p&gt;}
+            
+            {/* Expressions */}
+            &lt;p&gt;Current time: {currentTime}&lt;/p&gt;
+            &lt;p&gt;2 + 2 = {2 + 2}&lt;/p&gt;
+            
+            {/* Arrays */}
+            &lt;p&gt;User count: {users.length}&lt;/p&gt;
+            
+            {/* Inline styles (object) */}
+            &lt;div style={{
+                backgroundColor: 'lightblue',
+                padding: '10px',
+                borderRadius: '5px'
+            }}&gt;
+                Styled with inline styles
+            &lt;/div&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                        </div>
+
+                        <div class="tip-box">
+                            <h4>💡 JSX Best Practices:</h4>
+                            <ul>
+                                <li>Use parentheses for multi-line JSX</li>
+                                <li>Use descriptive variable names</li>
+                                <li>Keep JSX readable - break complex expressions into variables</li>
+                                <li>Use React Developer Tools for debugging</li>
+                                <li>Remember: JSX is JavaScript, not HTML!</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Components -->
+                    <section id="components" class="topic-section">
+                        <h2>React Components 🧩</h2>
+                        <div class="explanation">
+                            <p>Components are the building blocks of React applications. They let you split the UI into independent, reusable pieces.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Function Components (Modern way):</h4>
+                            <pre><code class="language-jsx">// Simple function component
+function Welcome() {
+    return &lt;h1&gt;Hello, World!&lt;/h1&gt;;
+}
+
+// Arrow function component
+const Greeting = () => {
+    return &lt;h2&gt;Welcome to React! ⚛️&lt;/h2&gt;;
+};
+
+// Component with logic
+function CurrentTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+    
+    return (
+        &lt;div&gt;
+            &lt;h3&gt;Current Time&lt;/h3&gt;
+            &lt;p&gt;{timeString}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}
+
+// Using components
+function App() {
+    return (
+        &lt;div&gt;
+            &lt;Welcome /&gt;
+            &lt;Greeting /&gt;
+            &lt;CurrentTime /&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Class Components (Legacy, but still used):</h4>
+                            <pre><code class="language-jsx">import React, { Component } from 'react';
+
+class Welcome extends Component {
+    render() {
+        return &lt;h1&gt;Hello from Class Component!&lt;/h1&gt;;
+    }
+}
+
+class Clock extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            time: new Date()
+        };
+    }
+    
+    componentDidMount() {
+        this.timer = setInterval(() => {
+            this.setState({ time: new Date() });
+        }, 1000);
+    }
+    
+    componentWillUnmount() {
+        clearInterval(this.timer);
+    }
+    
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;h2&gt;Current Time:&lt;/h2&gt;
+                &lt;p&gt;{this.state.time.toLocaleTimeString()}&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+}</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Component File Structure:</h4>
+                            <pre><code class="language-jsx">// components/Button.js
+import React from 'react';
+import './Button.css';
+
+function Button({ text, onClick, type = 'button' }) {
+    return (
+        &lt;button 
+            type={type}
+            onClick={onClick}
+            className="custom-button"
+        &gt;
+            {text}
+        &lt;/button&gt;
+    );
+}
+
+export default Button;</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Using Custom Components:</h4>
+                            <pre><code class="language-jsx">// App.js
+import React from 'react';
+import Button from './components/Button';
+
+function App() {
+    const handleClick = () => {
+        alert('Button clicked!');
+    };
+    
+    return (
+        &lt;div className="App"&gt;
+            &lt;h1&gt;My React App&lt;/h1&gt;
+            &lt;Button 
+                text="Click Me!" 
+                onClick={handleClick}
+                type="button"
+            /&gt;
+            &lt;Button 
+                text="Submit Form" 
+                onClick={handleClick}
+                type="submit"
+            /&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default App;</code></pre>
+                        </div>
+
+                        <div class="explanation-grid">
+                            <div class="explanation-item">
+                                <h4>Function Components</h4>
+                                <p>Modern, simpler syntax, use hooks for state</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Class Components</h4>
+                                <p>Traditional, more verbose, lifecycle methods</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Component Names</h4>
+                                <p>Must start with capital letter (PascalCase)</p>
+                            </div>
+                            <div class="explanation-item">
+                                <h4>Export/Import</h4>
+                                <p>Use export default and import to share components</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Props -->
+                    <section id="props" class="topic-section">
+                        <h2>Props (Properties) 📦</h2>
+                        <div class="explanation">
+                            <p>Props are how you pass data from parent components to child components. They're read-only and help make components reusable.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Basic Props Usage:</h4>
+                            <pre><code class="language-jsx">// Child component receiving props
+function UserCard({ name, email, age, avatar }) {
+    return (
+        &lt;div className="user-card"&gt;
+            &lt;img src={avatar} alt={`${name}'s avatar`} /&gt;
+            &lt;h3&gt;{name}&lt;/h3&gt;
+            &lt;p&gt;Email: {email}&lt;/p&gt;
+            &lt;p&gt;Age: {age}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}
+
+// Parent component passing props
+function App() {
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;User Directory&lt;/h1&gt;
+            &lt;UserCard 
+                name="John Doe"
+                email="john@example.com"
+                age={30}
+                avatar="https://example.com/john.jpg"
+            /&gt;
+            &lt;UserCard 
+                name="Jane Smith"
+                email="jane@example.com"
+                age={25}
+                avatar="https://example.com/jane.jpg"
+            /&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Props with Default Values:</h4>
+                            <pre><code class="language-jsx">// Using default parameters
+function Button({ text = 'Click Me', type = 'button', disabled = false }) {
+    return (
+        &lt;button type={type} disabled={disabled}&gt;
+            {text}
+        &lt;/button&gt;
+    );
+}
+
+// Using defaultProps (older method)
+function Welcome({ name, greeting }) {
+    return &lt;h1&gt;{greeting}, {name}!&lt;/h1&gt;;
+}
+
+Welcome.defaultProps = {
+    name: 'Guest',
+    greeting: 'Hello'
+};
+
+// Usage
+function App() {
+    return (
+        &lt;div&gt;
+            &lt;Button /&gt; {/* Uses all defaults */}
+            &lt;Button text="Submit" type="submit" /&gt;
+            &lt;Button text="Cancel" disabled={true} /&gt;
+            
+            &lt;Welcome /&gt; {/* Hello, Guest! */}
+            &lt;Welcome name="John" /&gt; {/* Hello, John! */}
+            &lt;Welcome name="Jane" greeting="Hi" /&gt; {/* Hi, Jane! */}
+        &lt;/div&gt;
+    );
+}</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Props Validation with PropTypes:</h4>
+                            <pre><code class="language-jsx">import PropTypes from 'prop-types';
+
+function UserCard({ name, email, age, isActive }) {
+    return (
+        &lt;div className={`user-card ${isActive ? 'active' : 'inactive'}`}&gt;
+            &lt;h3&gt;{name}&lt;/h3&gt;
+            &lt;p&gt;{email}&lt;/p&gt;
+            &lt;p&gt;Age: {age}&lt;/p&gt;
+            &lt;span&gt;{isActive ? 'Active' : 'Inactive'}&lt;/span&gt;
+        &lt;/div&gt;
+    );
+}
+
+// Props validation
+UserCard.propTypes = {
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    age: PropTypes.number,
+    isActive: PropTypes.bool
+};
+
+UserCard.defaultProps = {
+    age: 0,
+    isActive: false
+};</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Children Props:</h4>
+                            <pre><code class="language-jsx">// Component that wraps content
+function Card({ title, children }) {
+    return (
+        &lt;div className="card"&gt;
+            &lt;div className="card-header"&gt;
+                &lt;h3&gt;{title}&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div className="card-body"&gt;
+                {children}
+            &lt;/div&gt;
+        &lt;/div&gt;
+    );
+}
+
+// Usage with children
+function App() {
+    return (
+        &lt;div&gt;
+            &lt;Card title="User Info"&gt;
+                &lt;p&gt;Name: John Doe&lt;/p&gt;
+                &lt;p&gt;Email: john@example.com&lt;/p&gt;
+                &lt;button&gt;Edit Profile&lt;/button&gt;
+            &lt;/Card&gt;
+            
+            &lt;Card title="Stats"&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Posts: 15&lt;/li&gt;
+                    &lt;li&gt;Followers: 234&lt;/li&gt;
+                    &lt;li&gt;Following: 67&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/Card&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                        </div>
+
+                        <div class="tip-box">
+                            <h4>🎯 Props Best Practices:</h4>
+                            <ul>
+                                <li>Keep props simple and focused</li>
+                                <li>Use descriptive prop names</li>
+                                <li>Provide default values for optional props</li>
+                                <li>Use PropTypes for type checking in development</li>
+                                <li>Props are read-only - never modify them directly</li>
+                                <li>Use object destructuring for cleaner code</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- State -->
+                    <section id="state" class="topic-section">
+                        <h2>State & useState Hook 🎛️</h2>
+                        <div class="explanation">
+                            <p>State allows components to change their data over time. The useState hook is the modern way to add state to function components.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Basic useState:</h4>
+                            <pre><code class="language-jsx">import React, { useState } from 'react';
+
+function Counter() {
+    // useState returns [currentValue, setterFunction]
+    const [count, setCount] = useState(0);
+    
+    const increment = () => {
+        setCount(count + 1);
+    };
+    
+    const decrement = () => {
+        setCount(count - 1);
+    };
+    
+    const reset = () => {
+        setCount(0);
+    };
+    
+    return (
+        &lt;div&gt;
+            &lt;h2&gt;Counter: {count}&lt;/h2&gt;
+            &lt;button onClick={increment}&gt;+1&lt;/button&gt;
+            &lt;button onClick={decrement}&gt;-1&lt;/button&gt;
+            &lt;button onClick={reset}&gt;Reset&lt;/button&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Multiple State Variables:</h4>
+                            <pre><code class="language-jsx">function UserProfile() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [age, setAge] = useState(0);
+    const [isVisible, setIsVisible] = useState(true);
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log({ name, email, age });
+    };
+    
+    return (
+        &lt;div&gt;
+            {isVisible && (
+                &lt;form onSubmit={handleSubmit}&gt;
+                    &lt;input
+                        type="text"
+                        placeholder="Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    /&gt;
+                    &lt;input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    /&gt;
+                    &lt;input
+                        type="number"
+                        placeholder="Age"
+                        value={age}
+                        onChange={(e) => setAge(parseInt(e.target.value) || 0)}
+                    /&gt;
+                    &lt;button type="submit"&gt;Save Profile&lt;/button&gt;
+                &lt;/form&gt;
+            )}
+            &lt;button onClick={() => setIsVisible(!isVisible)}&gt;
+                {isVisible ? 'Hide' : 'Show'} Form
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Object State:</h4>
+                            <pre><code class="language-jsx">function UserForm() {
+    const [user, setUser] = useState({
+        name: '',
+        email: '',
+        preferences: {
+            theme: 'light',
+            notifications: true
+        }
+    });
+    
+    const handleInputChange = (field, value) => {
+        setUser(prevUser => ({
+            ...prevUser,
+            [field]: value
+        }));
+    };
+    
+    const handlePreferenceChange = (field, value) => {
+        setUser(prevUser => ({
+            ...prevUser,
+            preferences: {
+                ...prevUser.preferences,
+                [field]: value
+            }
+        }));
+    };
+    
+    return (
+        &lt;div&gt;
+            &lt;h2&gt;User Settings&lt;/h2&gt;
+            &lt;input
+                type="text"
+                placeholder="Name"
+                value={user.name}
+                onChange={(e) => handleInputChange('name', e.target.value)}
+            /&gt;
+            &lt;input
+                type="email"
+                placeholder="Email"
+                value={user.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
+            /&gt;
+            
+            &lt;h3&gt;Preferences&lt;/h3&gt;
+            &lt;select
+                value={user.preferences.theme}
+                onChange={(e) => handlePreferenceChange('theme', e.target.value)}
+            &gt;
+                &lt;option value="light"&gt;Light&lt;/option&gt;
+                &lt;option value="dark"&gt;Dark&lt;/option&gt;
+            &lt;/select&gt;
+            
+            &lt;label&gt;
+                &lt;input
+                    type="checkbox"
+                    checked={user.preferences.notifications}
+                    onChange={(e) => handlePreferenceChange('notifications', e.target.checked)}
+                /&gt;
+                Enable Notifications
+            &lt;/label&gt;
+            
+            &lt;pre&gt;{JSON.stringify(user, null, 2)}&lt;/pre&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                        </div>
+
+                        <div class="tip-box">
+                            <h4>🎛️ State Best Practices:</h4>
+                            <ul>
+                                <li>Use multiple useState calls for unrelated state</li>
+                                <li>Always use the setter function to update state</li>
+                                <li>Use functional updates when new state depends on previous state</li>
+                                <li>Keep state as simple as possible</li>
+                                <li>Don't mutate state objects directly - use spread operator</li>
+                                <li>Consider useReducer for complex state logic</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <div class="lesson-nav">
+                        <a href="../../nodejs/01-basics/index.html" class="nav-btn prev">← Node.js Basics</a>
+                        <a href="../02-intermediate/index.html" class="nav-btn next">Intermediate React →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Web Development Learning Hub. Build amazing UIs! ⚛️</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../../scripts/learning.js"></script>
+</body>
+</html>
